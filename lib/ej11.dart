@@ -56,13 +56,13 @@ class _RandomColors extends State<RandomColors> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               'Puntos: $points',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
             ),
             Center(
               child: GestureDetector(
@@ -96,15 +96,39 @@ class _RandomColors extends State<RandomColors> {
 
   void getRandomColor() {
     Random random = Random();
-    int randomNumber = random.nextInt(7);
-    randomColor = colorHex[randomNumber];
+    if(points>10){
+      int randomNumber = random.nextInt(7);
+      randomColor = colorHex[randomNumber];
+    } if(points>5){
+      int randomNumber = random.nextInt(6);
+      randomColor = colorHex[randomNumber];
+    } if(points<0){
+      int randomNumber = random.nextInt(3);
+      randomColor = colorHex[randomNumber];
+    } else {
+      int randomNumber = random.nextInt(5);
+      randomColor = colorHex[randomNumber];
+    }
+
   }
 
 
   void getRandomName() {
     Random random = Random();
-    int randomNumber = random.nextInt(7);
-    randomName = colorNames[randomNumber];
+    if(points>10){
+      int randomNumber = random.nextInt(7);
+      randomName = colorNames[randomNumber];
+    }
+    if(points>5){
+      int randomNumber = random.nextInt(6);
+      randomName = colorNames[randomNumber];
+    } if(points<0){
+      int randomNumber = random.nextInt(3);
+      randomName = colorNames[randomNumber];
+    } else {
+      int randomNumber = random.nextInt(5);
+      randomName = colorNames[randomNumber];
+    }
   }
 
 
