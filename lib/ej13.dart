@@ -7,7 +7,7 @@ import 'dart:math';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  
+
   const MyApp({super.key});
 
   @override
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeWidget extends StatelessWidget {
-  int randomNumber = rndm.nextInt(100)+1;
+
   final _formKey = GlobalKey<FormState>();
   final List<TextEditingController> _textEditingControllers = [];
   final List<Widget> _widgets = [];
@@ -66,7 +66,7 @@ class HomeWidget extends StatelessWidget {
   }
 
   static get rndm => new Random();
-
+  int randomNumber = rndm.nextInt(100)+1;
   TextFormField _createTextFormField(
       String fieldName, TextEditingController controller) {
     return TextFormField(
@@ -75,8 +75,11 @@ class HomeWidget extends StatelessWidget {
           if (value!.isEmpty) {
             return 'Por favor, introduzca $fieldName.';
           }
-          if (value==randomNumber) {
-            return 'Incorrecto el número era ' + randomNumber.toString() + '.';
+          if (num.parse(value)>=randomNumber) {
+            return 'Incorrecto el número es menor.';
+          }
+          if (num.parse(value)<=randomNumber) {
+            return 'Incorrecto el número es mayor.';
           }
           return null;
         },
